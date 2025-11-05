@@ -17,6 +17,26 @@
     {
       "src": "/api/(.*)",
       "dest": "/api/$1"
+    },
+    {
+      "src": "/static/(.*)",
+      "handle": "filesystem"
+    },
+    {
+      "src": "/logo.png",
+      "handle": "filesystem"
+    },
+    {
+      "src": "/manifest.json",
+      "handle": "filesystem"
+    },
+    {
+      "src": "/favicon.ico",
+      "handle": "filesystem"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/index.html"
     }
   ]
 }
