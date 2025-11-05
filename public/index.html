@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta
+      name="description"
+      content="Aplikasi AI SATSET"
+    />
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    <!--
+      manifest.json menyediakan metadata yang digunakan saat aplikasi web Anda diinstal di
+      perangkat seluler atau desktop pengguna. Lihat https://developers.google.com/web/fundamentals/web-app-manifest/
+    -->
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    
+    <!-- Impor Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: 'class', // 'media' atau 'class'
+        theme: {
+          extend: {
+            colors: {
+              // Anda bisa menambahkan warna kustom di sini jika perlu
+            }
+          }
+        }
+      }
+    </script>
+
+    <title>AI SATSET App</title>
+  </head>
+  <body class="bg-gray-100 dark:bg-gray-900">
+    <noscript>Anda perlu mengaktifkan JavaScript untuk menjalankan aplikasi ini.</noscript>
+    <!-- Ini adalah tempat aplikasi React Anda akan "ditempelkan" -->
+    <div id="root"></div>
+  </body>
+</html>
