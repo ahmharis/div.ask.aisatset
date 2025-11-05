@@ -2585,7 +2585,7 @@ export default function App() {
                     <div className="flex flex-col items-start justify-center h-auto p-4 shadow-md">
                         {/* Logo dan Title Utama */}
                         <div className="flex items-center mb-2">
-                            <img src="/AI SATSET LOGO.png" alt="Logo" className="h-8 w-8 mr-2" />
+                            <img src="/logo.png" alt="Logo" className="h-8 w-8 mr-2" />
                             <span className="text-2xl font-bold text-[#f8fb18]">AI SATSET</span>
                         </div>
                         
