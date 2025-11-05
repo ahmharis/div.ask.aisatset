@@ -1,16 +1,15 @@
 {
-  "version": 2,
   "builds": [
+    {
+      "src": "api/**/*.js",
+      "use": "@vercel/node"
+    },
     {
       "src": "package.json",
       "use": "@vercel/static-build",
       "config": {
-        "buildCommand": "npm run build"
+        "distDir": "build"
       }
-    },
-    {
-      "src": "api/**/*.js",
-      "use": "@vercel/node"
     }
   ],
   "routes": [
@@ -23,12 +22,8 @@
       "dest": "/static/$1"
     },
     {
-      "src": "/logo192.png",
-      "dest": "/logo192.png"
-    },
-    {
-      "src": "/logo512.png",
-      "dest": "/logo512.png"
+      "src": "/logo.png",
+      "dest": "/logo.png"
     },
     {
       "src": "/favicon.ico",
@@ -37,13 +32,6 @@
     {
       "src": "/manifest.json",
       "dest": "/manifest.json"
-    },
-    {
-      "src": "/AI SATSET LOGO.png",
-      "dest": "/AI SATSET LOGO.png"
-    },
-    {
-      "handle": "filesystem"
     },
     {
       "src": "/(.*)",
