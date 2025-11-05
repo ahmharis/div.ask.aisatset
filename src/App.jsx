@@ -1245,7 +1245,21 @@ const App4_PsikologisMarket = () => {
     const rawInputRef = useRef(null);
     const analysisResultRef = useRef(null);
     const businessNameInputRef = useRef(null);
-    const textareaRefs = { mappingInput: mappingInputRef, reviewInput: reviewInputRef, socialInput: socialInputRef, rawInput: rawInputRef };
+    const textareaRefs = React.useMemo(() => ({
+        mappingInput: mappingInputRef, 
+        reviewInput: reviewInputRef, 
+        socialInput: socialInputRef, 
+        rawInput: rawInputRef 
+}), [mappingInputRef, reviewInputRef, socialInputRef, rawInputRef]);
+
+    const autoExpandAllTextareas = useCallback(() => {
+        Object.values(textareaRefs).forEach(ref => {
+            if (ref.current) {
+                ref.current.style.height = 'auto';
+                ref.current.style.height = (ref.current.scrollHeight) + 'px';
+            }
+        });
+    }, [textareaRefs]);
 
     // --- Efek Samping ---
     useEffect(() => {
@@ -1300,16 +1314,7 @@ const App4_PsikologisMarket = () => {
         textarea.style.height = 'auto';
         textarea.style.height = (textarea.scrollHeight) + 'px';
     };
-    
-    const autoExpandAllTextareas = useCallback(() => {
-        Object.values(textareaRefs).forEach(ref => {
-            if (ref.current) {
-                ref.current.style.height = 'auto';
-                ref.current.style.height = (ref.current.scrollHeight) + 'px';
-            }
-        });
-    }, [textareaRefs]);
-    
+       
     const formatGeminiResponse = (text) => {
       let html = text;
       function applyInlineFormatting(line) {
