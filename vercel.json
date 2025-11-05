@@ -20,19 +20,19 @@
     },
     {
       "src": "/static/(.*)",
-      "handle": "filesystem"
+      "dest": "/static/$1"
     },
     {
       "src": "/logo.png",
-      "handle": "filesystem"
+      "dest": "/logo.png"
     },
     {
       "src": "/manifest.json",
-      "handle": "filesystem"
+      "dest": "/manifest.json"
     },
     {
       "src": "/favicon.ico",
-      "handle": "filesystem"
+      "dest": "/favicon.ico"
     },
     {
       "src": "/(.*)",
