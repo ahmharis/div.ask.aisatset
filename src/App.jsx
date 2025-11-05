@@ -1266,7 +1266,7 @@ const App4_PsikologisMarket = () => {
             }
             setTimeout(autoExpandAllTextareas, 0);
         } catch (e) { console.warn("Gagal memuat session storage:", e); }
-    }, []);
+    }, [autoExpandAllTextareas]);
 
     useEffect(() => {
         try {
@@ -1301,14 +1301,14 @@ const App4_PsikologisMarket = () => {
         textarea.style.height = (textarea.scrollHeight) + 'px';
     };
     
-    const autoExpandAllTextareas = () => {
+    const autoExpandAllTextareas = useCallback(() => {
         Object.values(textareaRefs).forEach(ref => {
             if (ref.current) {
-                ref.current.style.height = 'auto';
-                ref.current.style.height = (ref.current.scrollHeight) + 'px';
+                ref.current.style.height = 'auto';
+                ref.current.style.height = (ref.current.scrollHeight) + 'px';
             }
         });
-    };
+    }, [textareaRefs]);
     
     const formatGeminiResponse = (text) => {
       let html = text;
@@ -1321,10 +1321,10 @@ const App4_PsikologisMarket = () => {
       html = html.replace(/^###\s+(.*$)/gim, '<h3 class="text-md font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mt-4 mb-3">$1</h3>');
       html = html.replace(/^##\s+(.*$)/gim, '<h2 class="text-xl font-semibold text-cyan-700 dark:text-cyan-300 mt-6 mb-3">$1</h2>');
       html = html.replace(/^#\s+(.*$)/gim, '<h1 class="text-2xl font-bold text-cyan-600 dark:text-cyan-400 mb-4 border-b border-gray-200 dark:border-gray-700 pb-2">$1</h1>');
-      html = html.replace(/^(?:[\*]|\-)\s+(.*$)/gim, (match, content) => {
+      html = html.replace(/^(?:[*]|-)\s+(.*$)/gim, (match, content) => {
           return `<li class="pb-1">${applyInlineFormatting(content)}</li>`;
       });
-      html = html.replace(/(\<\/li\>\n?)+(\<li\>)/gim, '</li><li>');
+      html = html.replace(/(<\/li>\n?)+(<li>)/gim, '</li><li>');
       html = html.replace(/(<li>.*<\/li>)/gim, '<ul class="list-disc list-outside pl-5 mb-4 space-y-2 text-gray-700 dark:text-gray-300">$1</ul>');
       html = html.replace(/\<\/ul\>\n?(\<ul\>)/gim, '');
       html = html.split('\n').map(line => {
@@ -2369,7 +2369,7 @@ const App7_TtsGenerator = () => {
         return () => {
             if (audioUrl) URL.revokeObjectURL(audioUrl);
         };
-    }, [audioUrl]);
+    }, [audioUrl, speed, volume]);
 
     useEffect(() => { if (audioRef.current) audioRef.current.volume = volume / 100; }, [volume]);
     useEffect(() => { if (audioRef.current) audioRef.current.playbackRate = speed; }, [speed]);
