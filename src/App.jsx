@@ -1331,7 +1331,7 @@ const App4_PsikologisMarket = () => {
       });
       html = html.replace(/(<\/li>\n?)+(<li>)/gim, '</li><li>');
       html = html.replace(/(<li>.*<\/li>)/gim, '<ul class="list-disc list-outside pl-5 mb-4 space-y-2 text-gray-700 dark:text-gray-300">$1</ul>');
-      html = html.replace(/\<\/ul\>\n?(\<ul\>)/gim, '');
+      html = html.replace(/(<\/ul>\n?)(<ul>)/gim, '');
       html = html.split('\n').map(line => {
           line = line.trim();
           if (line.length === 0) return '';
